@@ -54,9 +54,10 @@ public class Etal<P extends IProduit> implements IEtal {
 	@Override
 	public int acheterProduit(int quantiteSouhaite) {
 		int prixPaye = 0;
-		for (int i = nbProduit - 1; i > nbProduit - quantiteSouhaite - 1 || i > 1; i--) {
-			prixPaye += produit[i].calculerPrix(prix); //question 3.d
+		for (int i = nbProduit - 1; i >= nbProduit - quantiteSouhaite && i >= 0; i--) {
+		    prixPaye += produit[i].calculerPrix(prix);
 		}
+
 		if (nbProduit >= quantiteSouhaite) {
 			nbProduit -= quantiteSouhaite;
 		} else {
@@ -72,7 +73,7 @@ public class Etal<P extends IProduit> implements IEtal {
 			chaine.append(" vend ");
 			chaine.append(nbProduit + " produits :");
 			for (int i = 0; i < nbProduit; i++) {
-				chaine.append("\n- " + produit[i].decrireProduit());
+				chaine.append("\n- ").append(produit[i].decrireProduit());
 			}
 		} else {
 			chaine.append(" n'a plus rien à vendre.");

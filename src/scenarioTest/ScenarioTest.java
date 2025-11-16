@@ -5,25 +5,26 @@ import produit.Poisson;
 import produit.Sanglier;
 import villagegaulois.Etal;
 import villagegaulois.IEtal;
+import villagegaulois.IVillage;
 
 public class ScenarioTest {
-//	public static void acheterProduit(Etal[] marche, String produit, int quantiteSouhaitee) {
-//		int quantiteRestante = quantiteSouhaitee;
-//		for (int i = 0; i < marche.length && quantiteRestante != 0; i++) {
-//			Etal etal = marche[i];
-//			int quantiteDisponible = etal.contientProduit(produit, quantiteRestante);
-//			if (quantiteDisponible != 0) {
-//				int prix = etal.acheterProduit(quantiteDisponible);
-//				String chaineProduit = accorderNomProduit(produit, quantiteDisponible);
-//				System.out.println("A l'étal n° " + (i + 1) + ", j'achete " + quantiteDisponible + " " + chaineProduit
-//						+ " et je paye " + prix + " sous.");
-//				quantiteRestante -= quantiteDisponible;
-//			}
-//		}
-//		String chaineProduit = accorderNomProduit(produit, quantiteSouhaitee);
-//		System.out.println("Je voulais " + quantiteSouhaitee + " " + chaineProduit + ", j'en ai acheté "
-//				+ (quantiteSouhaitee - quantiteRestante) + ".");
-//	}
+	public static void acheterProduit(IEtal[] marche, String produit, int quantiteSouhaitee) {
+		int quantiteRestante = quantiteSouhaitee;
+		for (int i = 0; i < marche.length && quantiteRestante != 0; i++) {
+			IEtal etal = marche[i];
+			int quantiteDisponible = etal.contientProduit(produit, quantiteRestante);
+			if (quantiteDisponible != 0) {
+				int prix = etal.acheterProduit(quantiteDisponible);
+				String chaineProduit = accorderNomProduit(produit, quantiteDisponible);
+				System.out.println("A l'étal n° " + (i + 1) + ", j'achete " + quantiteDisponible + " " + chaineProduit
+						+ " et je paye " + prix + " sous.");
+				quantiteRestante -= quantiteDisponible;
+			}
+		}
+		String chaineProduit = accorderNomProduit(produit, quantiteSouhaitee);
+		System.out.println("Je voulais " + quantiteSouhaitee + " " + chaineProduit + ", j'en ai acheté "
+				+ (quantiteSouhaitee - quantiteRestante) + ".");
+	}
 
 	private static String accorderNomProduit(String produit, int quantiteSouhaitee) {
 		String chaineProduit = produit;
@@ -55,13 +56,24 @@ public class ScenarioTest {
 		Etal<Sanglier> etalSanglierObelix = new Etal<>();
 		Etal<Sanglier> etalSanglierAsterix = new Etal<>();
 		
-		marche[0] = etalPoissonOrdralfabetix;
+		marche[0] = etalSanglierAsterix;
 		marche[1] = etalSanglierObelix;
-		marche[2] = etalSanglierAsterix;
+		marche[2] = etalPoissonOrdralfabetix;
 		
 		etalPoissonOrdralfabetix.installerVendeur(ordralfabetix, poissons, 7);
 		etalSanglierObelix.installerVendeur(obelix, sangliersObelix, 8);
 		etalSanglierAsterix.installerVendeur(asterix, sangliersAsterix, 10);
+		
+		System.out.println(marche[0].etatEtal());
+		System.out.println(marche[1].etatEtal());
+		System.out.println(marche[2].etatEtal());
+		
+		acheterProduit(marche, "sanglier", 3);
+		System.out.println("");
+
+		System.out.println(marche[0].etatEtal());
+		System.out.println(marche[1].etatEtal());
+		System.out.println(marche[2].etatEtal());
 	}
 }
 
