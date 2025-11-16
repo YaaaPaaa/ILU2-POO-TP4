@@ -1,10 +1,21 @@
 package produit;
 
 public enum Unite {
-	GRAMME("g"),KILOGRAMME("kg"), LITRE("l"), CENTILITRE("cl"), MILLILITRE("ml"), PIECE("piece");
+    GRAMME("g"),
+    KILOGRAMME("kg"),
+    LITRE("l"),
+    CENTILITRE("cl"),
+    MILLILITRE("ml"),
+    PIECE("pièce");
 
-	Unite(String string) {
-		// TODO Auto-generated constructor stub
-	}
-	
+    private final String symbole;
+
+    Unite(String symbole) {
+        this.symbole = symbole;
+    }
+
+    @Override
+    public String toString() {
+        return symbole;
+    }
 }

@@ -6,17 +6,14 @@ public class Sanglier extends Produit{
 	private int poids;
 	private Gaulois chasseur;
 	
-	public Sanglier(String nom, int poids, Gaulois chasseur) {
-		super(nom);
-		if (!"sanglier".equals(nom)) {
-			throw new IllegalArgumentException("Le Sanglier n'est pas un " + nom + ".");
-		}
+	public Sanglier(int poids, Gaulois chasseur) {
+		super("sanglier", Unite.KILOGRAMME);
 		this.poids = poids;
 		this.chasseur = chasseur;
 	}
 
-	@Override
-	public void decrireProduit(String produit) {
-		System.out.println(produit + " de " + poids + " " + Unite.KILOGRAMME + "chasses par " + chasseur + ".");
-	}
+		@Override
+		public void decrireProduit(Produit produit) {
+			System.out.println(produit.getNom() + " de " + poids + " " + Unite.KILOGRAMME + " chasses par " + chasseur.getNom() + ".");
+		}
 }

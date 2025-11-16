@@ -3,17 +3,13 @@ package produit;
 public class Poisson extends Produit{
 	private String jour;
 	
-	public Poisson(String nom, String jour) {
-		super(nom);
-		if (!"poisson".equals(nom)) {
-			throw new IllegalArgumentException("Le Poisson n'est pas un " + nom + ".");
-		}
-		
+	public Poisson(String jour) {
+		super("poisson", Unite.PIECE);
 		this.jour = jour;
 	}
 
 	@Override
-	public void decrireProduit(String produit) {
-		System.out.println(produit + " peches " + jour + ".");
+	public void decrireProduit(Produit produit) {
+		System.out.println(produit.getNom() + " peches " + jour + ".");
 	}
 }
