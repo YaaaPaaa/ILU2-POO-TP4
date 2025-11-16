@@ -5,6 +5,7 @@ import personnages.Gaulois;
 public class Sanglier extends Produit{
 	private int poids;
 	private Gaulois chasseur;
+	private Produit produit;
 	
 	public Sanglier(int poids, Gaulois chasseur) {
 		super("sanglier", Unite.KILOGRAMME);
@@ -13,7 +14,7 @@ public class Sanglier extends Produit{
 	}
 
 		@Override
-		public void decrireProduit(Produit produit) {
-			System.out.println(produit.getNom() + " de " + poids + " " + Unite.KILOGRAMME + " chasses par " + chasseur.getNom() + ".");
+		public String decrireProduit() {
+			return produit.getNom() + " de " + poids + " " + Unite.KILOGRAMME + " chasses par " + chasseur.getNom() + ".";
 		}
 }

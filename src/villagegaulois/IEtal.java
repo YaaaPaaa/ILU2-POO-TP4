@@ -1,19 +1,12 @@
 package villagegaulois;
 
-import java.beans.PropertyEditor;
-
 import personnages.Gaulois;
-import produit.Produit;
 
 public interface IEtal {
-	
-	public void occuperEtal(Gaulois vendeur, Produit produit , int quantite);
-
-	boolean isEtalOccupe();
-
 	Gaulois getVendeur();
-
+	int contientProduit(String produit, int quantiteSouhaitee);
+	int acheterProduit(int quantiteSouhaitee);
+	String etatEtal();
 	int getQuantite();
-
-	Produit getProduit();
+	boolean isEtalOccupe();
 }

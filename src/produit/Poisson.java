@@ -2,6 +2,7 @@ package produit;
 
 public class Poisson extends Produit{
 	private String jour;
+	private Produit produit;
 	
 	public Poisson(String jour) {
 		super("poisson", Unite.PIECE);
@@ -9,7 +10,7 @@ public class Poisson extends Produit{
 	}
 
 	@Override
-	public void decrireProduit(Produit produit) {
-		System.out.println(produit.getNom() + " peches " + jour + ".");
+	public String decrireProduit() {
+		return produit.getNom() + " peches " + jour + ".";
 	}
 }
